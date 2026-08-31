@@ -28,15 +28,10 @@ public class stud{
 
         taskHeader();
 
-        System.out.print("Task: ");
-        String task = input.nextLine();
-
-        studTaskPrio();
-
-        System.out.print("Choose: ");
-        int choose = input.nextInt();
-
-        studPrio(task, choose);
+        System.out.print("How many task do you want to encode? ");
+        int countTask = input.nextInt();
+        input.nextLine();
+        studTaskPrio(countTask, input);
 
         input.close();
 
@@ -61,27 +56,38 @@ public class stud{
         System.out.println();
         System.out.println("------- STUDENT TASK MANAGER -------\n");
     }
-    static void studTaskPrio(){
-        System.out.println();
-        System.out.println("Select priority: ");
-        System.out.println("1. High");
-        System.out.println("2. Medium");
-        System.out.println("3. Low");
-        System.out.println();
-    } 
-    static void studPrio(String task, int choose){
+    static void studTaskPrio(int countTask, Scanner input){
+        for(int i = 1; i <= countTask; i++){
+            System.out.print("\nTask " + i + ": ");
+            String task = input.nextLine();
+            System.out.println();
+            System.out.println();
+            System.out.println("Select priority: ");
+            System.out.println("1. High");
+            System.out.println("2. Medium");
+            System.out.println("3. Low");
+            System.out.println();
+            System.out.print("Choose: ");
+            int choose = input.nextInt();
+            input.nextLine();
+            System.out.println();
 
-        System.out.println();
+            studPrio(task, choose);
+        }
+        }
+ 
+    static void studPrio(String task, int choose){
+        
+        System.out.printf("Task: %s\n", task);
 
         if(choose == 1){
-            System.out.printf("Task: %s\n", task);
             System.out.println("Priority: HIGH");
         } else if(choose == 2){
-            System.out.printf("Task: %s\n", task);
             System.out.println("Priority: MEDIUM");
         } else if(choose == 3){
-            System.out.printf("Task: %s\n", task);
             System.out.println("Priority: LOW");
+        } else {
+            System.out.println("Invalid input!");
         }
     }
 }
